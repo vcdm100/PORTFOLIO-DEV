@@ -111,7 +111,6 @@ export default function Contact() {
 
                             <Button
                             type="submit"
-                            name="submit" 
                             waves="light" 
                             floating className="right green accent-4" 
                             title="Enviar"
@@ -120,7 +119,6 @@ export default function Contact() {
 
                             <Button
                             type="reset"
-                            name="limpar" 
                             waves="light"
                             floating className="right red accent-4" 
                             title="Cancelar"
