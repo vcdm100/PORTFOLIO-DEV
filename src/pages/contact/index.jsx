@@ -1,11 +1,10 @@
-import { React, useRef } from 'react';
+import { React, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { Row, Col, Card, Input, Button, Icon } from 'react-materialize';
 import UserProfile from '../../components/userProfile';
 
 
 export default function Contact() {
-
 
     const serviceId = import.meta.env.VITE_REACT_APP_SERVICE_ID;
     const templateId = import.meta.env.VITE_REACT_APP_TEMPLATE_ID;
@@ -30,15 +29,23 @@ export default function Contact() {
             alert(error.text);
         }); 
 
+    const [useRef] = useState ({
+            from_name: "",
+            user_email: "",
+            phone: "",
+            subject: "",
+            message: ""
+        });
+
+        useRef ({
+            from_name: "",
+            user_email: "",
+            phone: "",
+            subject: "",
+            message: ""
+        });
+
     };
-
-    function Form() {
-
-        const [Pt, setPt] = React.useState('');
-        const [Ps, setPs] = React.useState('');
-        const [V, setV] = React.useState('');
-        const [Z, setZ] = React.useState('');
-        const [p, setp] = React.useState('');
     
     return (
         <Row>
@@ -60,8 +67,7 @@ export default function Contact() {
                             label="Nome: " 
                             s={12} 
                             placeholder="Digite o seu nome completo"
-                            value={Pt}
-                            onChange={(e) => setPt(e.target.value)}
+                            value={useRef.from_name}
                             icon={<Icon>person</Icon>} />
 
                             <Input type="email"
@@ -70,8 +76,7 @@ export default function Contact() {
                             label="E-mail: "
                             s={12}
                             placeholder="Digite um e-mail válido"
-                            value={Ps}
-                            onChange={(e) => setPs(e.target.value)}
+                            value={useRef.user_email}
                             icon={<Icon>email</Icon>} />
 
                             <Input type="tel" 
@@ -80,8 +85,7 @@ export default function Contact() {
                             label="Telefone: " 
                             s={12} 
                             placeholder="(xx) x xxxx-xxxx"
-                            value={V}
-                            onChange={(e) => setV(e.target.value)}
+                            value={useRef.phone}
                             icon={<Icon>phone</Icon>} />
 
                             <Input 
@@ -91,8 +95,7 @@ export default function Contact() {
                             label="Assunto: " 
                             s={12} 
                             placeholder="Assunto"
-                            value={Z}
-                            onChange={(e) => setZ(e.target.value)}
+                            value={useRef.subject}
                             icon={<Icon>archive</Icon>} />
 
                             <Input type="text" 
@@ -101,23 +104,21 @@ export default function Contact() {
                             placeholder="Digite sua mensagem..." 
                             label="Mensagem: " 
                             s={12}
-                            value={p}
-                            onChange={(e) => setp(e.target.value)}
+                            value={useRef.message}
                             icon={<Icon>message</Icon>} />
 
                             <Col s={12} m={12}>
 
-                            <Button onClick={() => Form('')}
+                            <Button
                             type="submit"
                             name="submit" 
                             waves="light" 
                             floating className="right green accent-4" 
                             title="Enviar"
-                            value="submit"
                             node="button" >
                             <Icon>send</Icon></Button>   
 
-                            <Button onClick={() => Form('')}
+                            <Button
                             type="reset"
                             name="limpar" 
                             waves="light"
@@ -136,9 +137,6 @@ export default function Contact() {
             </Col>
 
         </Row>
-    )};
-
-    ReactDOM.render(<Form /> , document.querySelector(''));
-    
+    );
 };
 
