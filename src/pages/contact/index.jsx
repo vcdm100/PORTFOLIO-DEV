@@ -28,11 +28,18 @@ export default function Contact() {
         }, (error) => {
             console.log(error.text);
             alert(error.text);
-        });
+        }); 
 
     };
 
+function Form() {
 
+    const [Pt, setPt] = React.useState('');
+    const [Ps, setPs] = React.useState('');
+    const [V, setV] = React.useState('');
+    const [Z, setZ] = React.useState('');
+    const [p, setp] = React.useState('');
+    
     return (
         <Row>
 
@@ -52,7 +59,9 @@ export default function Contact() {
                             name="name" 
                             label="Nome: " 
                             s={12} 
-                            placeholder="Digite o seu nome completo" 
+                            placeholder="Digite o seu nome completo"
+                            value={Pt}
+                            onChange={(e) => setPt(e.target.value)}
                             icon={<Icon>person</Icon>} />
 
                             <Input type="email"
@@ -61,6 +70,8 @@ export default function Contact() {
                             label="E-mail: "
                             s={12}
                             placeholder="Digite um e-mail válido"
+                            value={Ps}
+                            onChange={(e) => setPs(e.target.value)}
                             icon={<Icon>email</Icon>} />
 
                             <Input type="text" 
@@ -68,7 +79,9 @@ export default function Contact() {
                             name="phone" 
                             label="Telefone: " 
                             s={12} 
-                            placeholder="(xx) x xxxx-xxxx" 
+                            placeholder="(xx) x xxxx-xxxx"
+                            value={V}
+                            onChange={(e) => setV(e.target.value)}
                             icon={<Icon>phone</Icon>} />
 
                             <Input 
@@ -77,7 +90,9 @@ export default function Contact() {
                             name="subject" 
                             label="Assunto: " 
                             s={12} 
-                            placeholder="Assunto" 
+                            placeholder="Assunto"
+                            value={Z}
+                            onChange={(e) => setZ(e.target.value)}
                             icon={<Icon>archive</Icon>} />
 
                             <Input type="text" 
@@ -85,7 +100,9 @@ export default function Contact() {
                             name="message" 
                             placeholder="Digite sua mensagem..." 
                             label="Mensagem: " 
-                            s={12} 
+                            s={12}
+                            value={p}
+                            onChange={(e) => setp(e.target.value)}
                             icon={<Icon>message</Icon>} />
 
                             <Col s={12} m={12}>
@@ -99,7 +116,8 @@ export default function Contact() {
                             node="button">
                             <Icon>send</Icon></Button>   
 
-                            <Button type="reset"
+                            <Button onClick={() => setPt('')}
+                            type="button"
                             name="limpar" 
                             waves="light"
                             floating className="right red accent-4" 
@@ -116,6 +134,9 @@ export default function Contact() {
             </Col>
 
         </Row>
-    );
+    )};
+
+    ReactDOM.render(<Form /> , document.querySelector(''));
+    
 };
 
