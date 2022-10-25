@@ -32,13 +32,13 @@ export default function Contact() {
 
     };
 
-function Form() {
+    function Form() {
 
-    const [Pt, setPt] = React.useState('');
-    const [Ps, setPs] = React.useState('');
-    const [V, setV] = React.useState('');
-    const [Z, setZ] = React.useState('');
-    const [p, setp] = React.useState('');
+        const [Pt, setPt] = React.useState('');
+        const [Ps, setPs] = React.useState('');
+        const [V, setV] = React.useState('');
+        const [Z, setZ] = React.useState('');
+        const [p, setp] = React.useState('');
     
     return (
         <Row>
@@ -74,7 +74,7 @@ function Form() {
                             onChange={(e) => setPs(e.target.value)}
                             icon={<Icon>email</Icon>} />
 
-                            <Input type="text" 
+                            <Input type="tel" 
                             id="phone" 
                             name="phone" 
                             label="Telefone: " 
@@ -107,23 +107,25 @@ function Form() {
 
                             <Col s={12} m={12}>
 
-                            <Button type="submit"
+                            <Button onClick={() => Form('')}
+                            type="submit"
                             name="submit" 
                             waves="light" 
                             floating className="right green accent-4" 
                             title="Enviar"
                             value="submit"
-                            node="button">
+                            node="button" >
                             <Icon>send</Icon></Button>   
 
-                            <Button onClick={() => setPt('')}
-                            type="button"
+                            <Button onClick={() => Form('')}
+                            type="reset"
                             name="limpar" 
                             waves="light"
                             floating className="right red accent-4" 
                             title="Cancelar"
-                            value="Limpar"
-                            style={{ marginRight: '10px' }}>
+                            value="limpar"
+                            node="button"
+                            style={{ marginRight: '10px' }} >
                             <Icon>cancel</Icon></Button>
                             
                             </Col>
